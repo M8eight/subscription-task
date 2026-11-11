@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: subscription-service
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    enabled: true
+    schemas:
+      - public
+    callback-locations: classpath:db/migration
+  datasource:
+    url: ${PSQL_URL:jdbc:postgresql://localhost:5432}/${PSQL_FLOW_DB:subscription_db}
+    username: ${PSQL_FLOW_USER:subscription_user}
+    password: ${PSQL_FLOW_PASS:subscription_pass}
+    driver-class-name: org.postgresql.Driver
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8083
