@@ -29,14 +29,14 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-kafka'
 
+	implementation 'net.javacrumbs.shedlock:shedlock-spring:6.3.1'
+	implementation 'net.javacrumbs.shedlock:shedlock-provider-jdbc-template:6.3.1'
+
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-flyway-test'
