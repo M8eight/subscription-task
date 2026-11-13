@@ -17,6 +17,18 @@ spring:
     password: ${PSQL_FLOW_PASS:subscription_pass}
     driver-class-name: org.postgresql.Driver
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      properties:
+        enable.idempotence: true
+    listener:
+      ack-mode: record
+      concurrency: 3
+
 eureka:
   instance:
     hostname: localhost
@@ -27,3 +39,13 @@ eureka:
 
 server:
   port: 8083
+
+app:
+  kafka:
+    topics:
+      output: subscription.changed
+
+logging:
+  level:
+    org.apache.kafka: WARN
+    org.springframework.kafka: INFO
